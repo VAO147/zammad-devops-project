@@ -1,0 +1,25 @@
+name: Runner Test
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test-runner:
+
+    runs-on: [self-hosted, zammad]
+
+    steps:
+
+      - name: Show system information
+        run: |
+          echo "Runner: $(hostname)"
+          echo "User: $(whoami)"
+          echo "OS:"
+          cat /etc/os-release
+
+      - name: Show Docker version
+        run: docker --version
+
+      - name: Test SonarQube
+        run: |
+          curl -I http://localhost:9000
