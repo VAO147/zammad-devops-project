@@ -80,7 +80,7 @@ RUN if [ -z "${COMMIT_SHA}" ]; then \
 RUN touch db/schema.rb && \
     ZAMMAD_SAFE_MODE=1 DATABASE_URL=postgresql://zammad:/zammad bundle exec rake assets:precompile
 
-RUN script/build/cleanup.sh
+RUN chmod +x script/build/cleanup.sh && script/build/cleanup.sh
 
 # Precompile bootsnap code for faster boot times
 RUN bundle exec bootsnap precompile --gemfile app/ lib/
