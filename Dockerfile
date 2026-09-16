@@ -45,7 +45,7 @@ SHELL ["/bin/bash", "-o", "errexit", "-o", "pipefail", "-c"]
 
 # Install packages needed to build gems and node modules
 RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y build-essential git libimlib2-dev libpq-dev libyaml-dev && \
+    apt-get install --no-install-recommends -y build-essential git libimlib2-dev libpq-dev libyaml-dev && gem install resolv -v 0.7.2 && \
     rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
 # Install application gems
